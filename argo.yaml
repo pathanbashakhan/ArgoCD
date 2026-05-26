@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pathan-helm-app
+  namespace: argocd   # Argo CD watches for Application manifests in its own namespace
+spec:
+  project: default     # Uses the built-in default project group
+  source:
+    repoURL: 'https://github.com/pathanbashakhan/ArgoCD.git' # Your exact GitHub Repo
+    targetRevision: HEAD                                         # Tracks the latest commit
+    path: 'my-app'                                               # The folder where Chart.yaml lives
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc' # Deploys straight into your Kubeadm cluster
+    namespace: default                       # Target namespace for your application pods
+  #syncPolicy: {}                             # Configures Manual Sync mode for learning
