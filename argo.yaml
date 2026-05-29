@@ -7,7 +7,7 @@ spec:
   project: default     # Uses the built-in default project group
   source:
     repoURL: 'https://github.com/pathanbashakhan/ArgoCD.git' # Your exact GitHub Repo
-    targetRevision: HEAD                                         # Tracks the latest commit
+    targetRevision: main                                         # Tracks the latest commit
     path: 'my-app'                                               # The folder where Chart.yaml lives
     helm:
       valueFiles:
