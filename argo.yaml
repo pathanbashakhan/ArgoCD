@@ -8,12 +8,10 @@ spec:
   source:
     repoURL: 'https://github.com/pathanbashakhan/ArgoCD.git' # Your exact GitHub Repo
     targetRevision: main                                         # Tracks the latest commit
-    path: 'my-app'
-    directory:
-      recurse: true                                               # The folder where Chart.yaml lives
-    #helm:
-    #  valueFiles:
-    #    - values.yaml
+    path: 'dir'                                               # The folder where Chart.yaml lives
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: 'https://kubernetes.default.svc' # Deploys straight into your Kubeadm cluster
     namespace: default                       # Target namespace for your application pods
