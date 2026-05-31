@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pathan-nginx-deployment
+  labels:
+    app: pathan-web
+spec:
+  replicas: 2                     # Spins up 2 pods across your Kubeadm nodes
+  selector:
+    matchLabels:
+      app: pathan-web
+  template:
+    metadata:
+      labels:
+        app: pathan-web
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest       # Standard lightweight web server image
+        ports:
+        - containerPort: 80
+        
